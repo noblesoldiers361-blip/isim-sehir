@@ -184,8 +184,17 @@ function check(cat, rawText, letter) {
   // 2) çoğul eki (kediler → kedi)
   const m = f.match(/^(.{3,}?)(lar|ler)$/);
   if (m && (r = hit(m[1]))) return r;
-  // (Bulanık eşleşme yok: sözlükte olmayan kelime benzerine yuvarlanmaz, oylamaya gider.)
-  // 3) sözlükte yok → harf doğruysa oylanır
+  // 3) yazım hatası: temkinli. En az 6 harf, ilk VE son harf aynı, tek bir düzenleme ve sözlükte TEK aday olmalı.
+  //    Birden fazla benzer kelime varsa yuvarlamaz, oylamaya gider.
+  if (f.length >= 6) {
+    const pool = [].concat(byLen[cat].get(f.length - 1) || [], byLen[cat].get(f.length) || [], byLen[cat].get(f.length + 1) || []);
+    const near = pool.filter(k => k[0] === f[0] && k[k.length - 1] === f[f.length - 1] && lev1(f, k));
+    if (near.length === 1) {
+      const canon = d.get(near[0]);
+      if (startsWithLetter(canon, letter)) return { status: 'ok', key: 'd:' + near[0], text, canon, fuzzy: true };
+    }
+  }
+  // 4) sözlükte yok → harf doğruysa oylanır
   if (!startsWithLetter(text, letter)) return { status: 'bad', reason: 'harf', text };
   return { status: 'disputed', key: 'u:' + f, text };
 }
