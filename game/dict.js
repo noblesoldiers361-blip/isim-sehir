@@ -89,30 +89,45 @@ function load() {
 load();
 
 // ---- oyunda öğrenilen cevaplar (oylamayla kabul edilenler) ----
-const learnedNew = {};
-let saveTimer = null;
+// Kalıcılık: UPSTASH_REDIS_REST_URL + UPSTASH_REDIS_REST_TOKEN varsa Upstash Redis (Render'da disk silinir),
+// yoksa data/*.json dosyaları. Bağımlılık yok, sadece fetch.
+const R_URL = (process.env.UPSTASH_REDIS_REST_URL || '').replace(/\/$/, ''), R_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || '';
+const remote = !!(R_URL && R_TOKEN);
+async function rcmd(cmd) {
+  const r = await fetch(R_URL, { method: 'POST', headers: { Authorization: 'Bearer ' + R_TOKEN }, body: JSON.stringify(cmd) });
+  const j = await r.json(); if (j.error) throw new Error(j.error); return j.result;
+}
+let learnedAll = {};
+try { learnedAll = JSON.parse(fs.readFileSync(LEARNED_FILE, 'utf8')); } catch {}
+let cands = {};
+try { cands = JSON.parse(fs.readFileSync(CAND_FILE, 'utf8')); } catch {}
+async function initRemote() {           // sunucu açılırken bir kez: Redis'teki kayıtları yükle
+  if (!remote) return false;
+  try {
+    const [l, c] = await Promise.all([rcmd(['GET', 'isim:learned']), rcmd(['GET', 'isim:cands'])]);
+    const L = l ? JSON.parse(l) : {};
+    Object.keys(L).forEach(cat => { if (dicts[cat] && Array.isArray(L[cat])) { L[cat].forEach(w => addWord(cat, w)); learnedAll[cat] = Array.from(new Set([...(learnedAll[cat] || []), ...L[cat]])); } });
+    if (c) Object.assign(cands, JSON.parse(c));
+    return true;
+  } catch (e) { console.log('Redis okunamadı:', e.message); return false; }
+}
+function persist(kind) {
+  const file = kind === 'learned' ? LEARNED_FILE : CAND_FILE, data = JSON.stringify(kind === 'learned' ? learnedAll : cands);
+  try { fs.writeFileSync(file, data); } catch { /* disk yazılamazsa sorun değil */ }
+  if (remote) rcmd(['SET', 'isim:' + kind, data]).catch(e => console.log('Redis yazılamadı:', e.message));
+}
+const timers = {};
+function later(kind) { clearTimeout(timers[kind]); timers[kind] = setTimeout(() => persist(kind), 2000); if (timers[kind].unref) timers[kind].unref(); }
 function learn(cat, text) {
   if (!dicts[cat]) return;
   const t = cleanText(text);
   if (t.length < 2 || isBad(t) || !addWord(cat, t)) return;
-  (learnedNew[cat] = learnedNew[cat] || []).push(t);
-  clearTimeout(saveTimer);
-  saveTimer = setTimeout(() => {
-    try {
-      let all = {};
-      try { all = JSON.parse(fs.readFileSync(LEARNED_FILE, 'utf8')); } catch {}
-      Object.keys(learnedNew).forEach(c => { all[c] = Array.from(new Set([...(all[c] || []), ...learnedNew[c]])); learnedNew[c] = []; });
-      fs.writeFileSync(LEARNED_FILE, JSON.stringify(all));
-    } catch { /* disk yazılamıyorsa bellekte kalır */ }
-  }, 2000);
-  if (saveTimer.unref) saveTimer.unref();
+  (learnedAll[cat] = learnedAll[cat] || []).push(t);
+  later('learned');
 }
 
 // Oyuncuların çoğunluğunca kabul edilen sözlük dışı cevap: aday olarak sayılır,
 // NEED_GAMES farklı oyunda kabul edilirse sözlüğe girer.
-let cands = {};
-try { cands = JSON.parse(fs.readFileSync(CAND_FILE, 'utf8')); } catch {}
-let candTimer = null;
 function suggest(cat, text, gameId) {
   if (!dicts[cat]) return false;
   const t = cleanText(text);
@@ -122,9 +137,7 @@ function suggest(cat, text, gameId) {
   if (!c.games.includes(gameId)) c.games.push(gameId);
   let promoted = false;
   if (c.games.length >= NEED_GAMES) { learn(cat, c.text); delete cands[key]; promoted = true; }
-  clearTimeout(candTimer);
-  candTimer = setTimeout(() => { try { fs.writeFileSync(CAND_FILE, JSON.stringify(cands)); } catch {} }, 2000);
-  if (candTimer.unref) candTimer.unref();
+  later('cands');
   return promoted;
 }
 
@@ -187,4 +200,4 @@ function check(cat, rawText, letter) {
   return { status: 'disputed', key: 'u:' + f, text };
 }
 
-module.exports = { CATEGORIES, CAT_IDS, LETTERS, HARD_LETTERS, fold, check, learn, suggest, cleanText, isBad, firstLetter, lower, size: cat => (dicts[cat] ? dicts[cat].size : 0) };
+module.exports = { CATEGORIES, CAT_IDS, LETTERS, HARD_LETTERS, fold, check, learn, suggest, initRemote, cleanText, isBad, firstLetter, lower, size: cat => (dicts[cat] ? dicts[cat].size : 0) };

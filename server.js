@@ -280,6 +280,6 @@ setInterval(() => {
 setInterval(() => wss.clients.forEach(ws => { ws.msgCount = 0; }), 1000).unref();
 
 if (require.main === module) {
-  server.listen(PORT, () => console.log(`İsim Şehir çalışıyor → http://localhost:${PORT}`));
+  dict.initRemote().finally(() => server.listen(PORT, () => console.log(`İsim Şehir çalışıyor → http://localhost:${PORT}`)));
 }
 module.exports = server;
