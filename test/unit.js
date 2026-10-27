@@ -80,7 +80,7 @@ ok('BİTTİ: tüm kutular dolu olmalı, geri sayım başlar', () => {
   g.done('p1');
   assert(g.rd.countdownEnd && g.rd.countdownEnd - m.clock.now() <= 20000);
   assert.strictEqual(g.rd.doneBy, 'p1');
-  m.adv(T.doneCountdown + 10);
+  m.adv(20000 + 10);
   assert.strictEqual(g.phase, 'grace');
 });
 
