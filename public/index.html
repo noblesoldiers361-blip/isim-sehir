@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>İsim Şehir</title>
+  <meta name="theme-color" content="#efe7cf">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div id="app">
+  <div id="conn" class="conn hidden">Bağlantı koptu, yeniden bağlanılıyor…</div>
+  <div id="toasts"></div>
+
+  <!-- 1) GİRİŞ -->
+  <section id="scr-home" class="screen">
+    <div class="page">
+      <div class="sheet hero">
+        <h1 class="logo"><span class="hl">İsim</span> <span class="logo2">Şehir</span></h1>
+        <p class="tagline">Kâğıt kalem oyunu, bu sefer telefonda.<br>Harf gelir, süre başlar, ilk yazan kazanmaz, <b>farklı yazan</b> kazanır.</p>
+        <form id="home-form" autocomplete="off">
+          <label class="field-label" for="nick">Takma adın</label>
+          <input id="nick" class="line-input" maxlength="16" autocomplete="off" autocapitalize="words" autocorrect="off" spellcheck="false" enterkeyhint="done" placeholder="Adın ne?">
+          <button type="button" class="btn big" id="btn-create">Oda kur</button>
+          <div class="or">ya da arkadaşının kodunu yaz</div>
+          <div class="join-row">
+            <input id="code" class="line-input code-input" maxlength="5" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="KOD">
+            <button type="submit" class="btn alt" id="btn-join">Katıl</button>
+          </div>
+        </form>
+        <div id="open-rooms" class="open-rooms hidden">
+          <div class="small-label">Açık odalar</div>
+          <ul id="open-list" class="open-list"></ul>
+        </div>
+        <button class="linkish" id="btn-rules">Nasıl oynanır?</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2) LOBİ -->
+  <section id="scr-lobby" class="screen">
+    <div class="page">
+      <div class="sheet">
+        <div class="lobby-head">
+          <div>
+            <div class="small-label">Oda kodu</div>
+            <div class="room-code" id="room-code">-----</div>
+          </div>
+          <div class="lobby-btns"><button class="btn tiny alt gear" type="button" aria-label="Ayarlar">⚙</button>
+            <button class="btn tiny" id="btn-copy">Linki kopyala</button>
+            <button class="btn tiny alt" id="btn-share">Paylaş</button>
+          </div>
+        </div>
+
+        <h2 class="h2">Oyuncular <span id="player-count" class="muted"></span></h2>
+        <ol id="player-list" class="players"></ol>
+
+        <h2 class="h2">Oyun ayarları <span id="settings-note" class="muted"></span></h2>
+        <div class="setting">
+          <div class="setting-title">Kategoriler</div>
+          <div id="cat-chips" class="chips"></div>
+        </div>
+        <div class="setting">
+          <div class="setting-title">Tur süresi</div>
+          <div id="dur-chips" class="chips"></div>
+        </div>
+        <div class="setting">
+          <div class="setting-title">Oyun nasıl bitsin?</div>
+          <div class="seg" id="end-seg">
+            <button data-mode="rounds" type="button">Tur sayısı</button>
+            <button data-mode="points" type="button">Hedef puan</button>
+          </div>
+          <div class="stepper">
+            <button type="button" class="step-btn" id="tgt-minus" aria-label="Azalt">−</button>
+            <div class="step-val"><span id="tgt-val">6</span> <span id="tgt-unit" class="muted">tur</span></div>
+            <button type="button" class="step-btn" id="tgt-plus" aria-label="Artır">+</button>
+          </div>
+        </div>
+        <div class="setting">
+          <label class="check"><input type="checkbox" id="priv"><span class="box"></span> Özel oda <span class="muted">(açık odalar listesinde görünmesin)</span></label>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn alt" id="btn-lobby-leave">Odadan çık</button>
+      <button class="btn big grow" id="btn-start">Oyunu başlat</button>
+    </div>
+  </section>
+
+  <!-- 3) HARF GELİYOR -->
+  <section id="scr-ready" class="screen">
+    <div class="page center">
+      <div class="sheet ready-sheet">
+        <div class="small-label" id="ready-round">Tur 1</div>
+        <div class="big-letter-wrap">
+          <svg class="scribble" viewBox="0 0 200 200" aria-hidden="true"><path d="M100 14 C 165 10, 192 70, 184 118 C 176 168, 120 192, 78 184 C 26 174, 8 120, 18 78 C 30 30, 70 16, 112 20" /></svg>
+          <div class="big-letter" id="ready-letter">?</div>
+        </div>
+        <div class="ready-text">Bu turun harfi</div>
+        <div class="ready-count" id="ready-count"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4) TUR -->
+  <section id="scr-play" class="screen">
+    <header class="topbar">
+      <div class="tb-left"><div class="tb-row"><button class="gear" type="button" aria-label="Ayarlar">⚙</button><div class="small-label" id="play-round">Tur 1</div></div><div class="tb-players" id="play-players"></div></div>
+      <div class="tb-letter" id="play-letter">A</div>
+      <div class="tb-time" id="play-time">3:00</div>
+    </header>
+    <div class="timebar"><i id="timebar-fill"></i></div>
+    <div id="done-banner" class="done-banner hidden"></div>
+    <div class="page" id="play-page">
+      <div class="sheet"><div id="fields" class="fields"></div></div>
+    </div>
+    <div class="actions">
+      <button class="btn big grow" id="btn-done">BİTTİ!</button>
+    </div>
+  </section>
+
+  <!-- 5) CEVAPLAR (sırayla) -->
+  <section id="scr-reveal" class="screen">
+    <header class="topbar">
+      <div class="tb-left"><div class="tb-row"><button class="gear" type="button" aria-label="Ayarlar">⚙</button><div class="small-label" id="rv-round">Tur 1</div></div><div class="rv-prog" id="rv-prog"></div></div>
+      <div class="tb-letter" id="rv-letter">A</div>
+      <button class="btn tiny alt" id="btn-skip">Atla ›</button>
+    </header>
+    <div class="timebar"><i id="rv-timebar"></i></div>
+    <div class="page" id="rv-page">
+      <div id="rv-current"></div>
+      <div id="rv-past" class="past"></div>
+    </div>
+  </section>
+
+  <!-- 6) PUAN LİSTESİ -->
+  <section id="scr-scores" class="screen">
+    <div class="page">
+      <div class="sheet">
+        <button class="gear gear-abs" type="button" aria-label="Ayarlar">⚙</button>
+        <h2 class="h2 big-h"><span class="hl" id="sc-title">Puan cetveli</span></h2>
+        <ol id="score-list" class="scores"></ol>
+        <details class="paper-details" id="sc-details"><summary>Bu turun cevap kâğıdı</summary><div id="sc-grid"></div></details>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="wait-note" id="sc-wait"></div>
+      <button class="btn big grow" id="btn-next">Devam</button>
+    </div>
+  </section>
+
+  <!-- 7) OYUN BİTTİ -->
+  <section id="scr-over" class="screen">
+    <div class="page">
+      <div class="sheet">
+        <button class="gear gear-abs" type="button" aria-label="Ayarlar">⚙</button>
+        <div class="trophy" aria-hidden="true">🏆</div>
+        <h2 class="h2 big-h center-t"><span class="hl" id="over-title">Kazanan</span></h2>
+        <div class="winner-name" id="over-winner"></div>
+        <ol id="final-list" class="scores"></ol>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn alt" id="btn-over-leave">Çık</button>
+      <button class="btn big grow" id="btn-lobby">Yeni oyun</button>
+    </div>
+  </section>
+
+  <!-- Ayarlar -->
+  <div id="modal-menu" class="modal hidden">
+    <div class="sheet modal-card">
+      <h2 class="h2">Ayarlar</h2>
+      <div class="menu-rows">
+        <button class="btn alt menu-btn" id="m-sound" type="button"></button>
+        <button class="btn alt menu-btn" id="m-vib" type="button"></button>
+        <button class="btn alt menu-btn" id="m-rules" type="button">Nasıl oynanır?</button>
+      </div>
+      <div id="m-confirm" class="m-confirm hidden">
+        <p id="m-confirm-text">Odadan çıkmak istediğine emin misin?</p>
+        <div class="row2"><button class="btn alt" id="m-no" type="button">Vazgeç</button><button class="btn danger" id="m-yes" type="button">Evet, çık</button></div>
+      </div>
+      <div class="row2" id="m-main">
+        <button class="btn danger" id="m-leave" type="button">Odadan çık</button>
+        <button class="btn big" id="m-close" type="button">Oyuna dön</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nasıl oynanır -->
+  <div id="modal-rules" class="modal hidden">
+    <div class="sheet modal-card">
+      <h2 class="h2">Nasıl oynanır?</h2>
+      <ol class="rules">
+        <li>Sunucu bir <b>harf</b> verir. Herkes o harfle başlayan isim, şehir, hayvan… yazar.</li>
+        <li>Herkes <b>bitti</b> demeden önce tüm kutuları doldurmalı. Biri bitti derse diğerlerine <b>10 saniye</b> kalır.</li>
+        <li>Aynı cevap: <b>5 puan</b>. Sadece senin yazdığın cevap: <b>10 puan</b>. Boş ya da yanlış harf: <b>0</b>.</li>
+        <li>Cevaplar kategori kategori açılır. Sözlükte olmayan cevaplar arkadaşların oyuyla <b>kabul ya da ret</b> edilir.</li>
+        <li>Tur sayısı ya da hedef puana ulaşan oyun biter, en çok puan kazanır.</li>
+      </ol>
+      <button class="btn big" id="btn-rules-close">Anladım</button>
+    </div>
+  </div>
+</div>
+<script src="/app.js"></script>
+</body>
+</html>

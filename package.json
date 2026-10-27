@@ -1,0 +1,12 @@
+{
+  "name": "isim-sehir",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Odalı çok oyunculu İsim Şehir",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/unit.js && node test/ws-test.js"
+  },
+  "engines": { "node": ">=18" }
+}
