@@ -255,6 +255,7 @@
     $('#settings-note').textContent = host ? '' : '(sadece kurucu değiştirir)';
     $('#cat-chips').innerHTML = catalog.map(c => `<button type="button" class="chip ${st.cats.includes(c.id) ? 'on' : ''}" data-cat="${c.id}">${esc(c.label)}</button>`).join('');
     $('#dur-chips').innerHTML = DURS.map(([s, l]) => `<button type="button" class="chip ${st.duration === s ? 'on' : ''}" data-dur="${s}">${l}</button>`).join('');
+    $('#done-chips').innerHTML = [[0, 'Süre dolsun'], [10, '10 sn'], [20, '20 sn'], [30, '30 sn']].map(([v, l]) => `<button type="button" class="chip ${(st.doneSec === undefined ? 20 : st.doneSec) === v ? 'on' : ''}" data-done="${v}">${l}</button>`).join('');
     $$('#end-seg button').forEach(b => b.classList.toggle('on', b.dataset.mode === st.endMode));
     $('#tgt-val').textContent = st.target;
     $('#tgt-unit').textContent = st.endMode === 'rounds' ? 'tur' : 'puan';
@@ -271,6 +272,7 @@
     setSettings({ cats: [...set] });
   });
   $('#dur-chips').addEventListener('click', e => { const b = e.target.closest('[data-dur]'); if (b && isHost()) setSettings({ duration: Number(b.dataset.dur) }); });
+  $('#done-chips').addEventListener('click', e => { const b = e.target.closest('[data-done]'); if (b && isHost()) setSettings({ doneSec: Number(b.dataset.done) }); });
   $('#end-seg').addEventListener('click', e => { const b = e.target.closest('[data-mode]'); if (b && isHost() && b.dataset.mode !== room.settings.endMode) setSettings({ endMode: b.dataset.mode }); });
   function stepTarget(dir) {
     if (!isHost()) return;

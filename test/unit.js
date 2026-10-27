@@ -78,7 +78,7 @@ ok('BİTTİ: tüm kutular dolu olmalı, geri sayım başlar', () => {
   assert.throws(() => g.done('p1'), GameError);
   g.setAnswers('p1', { isim: 'Ali', sehir: 'Adana' });
   g.done('p1');
-  assert(g.rd.countdownEnd && g.rd.countdownEnd - m.clock.now() <= T.doneCountdown);
+  assert(g.rd.countdownEnd && g.rd.countdownEnd - m.clock.now() <= 20000);
   assert.strictEqual(g.rd.doneBy, 'p1');
   m.adv(T.doneCountdown + 10);
   assert.strictEqual(g.phase, 'grace');

@@ -17,7 +17,7 @@ const T = {
 };
 if (FAST) Object.keys(T).forEach(k => { T[k] = Math.max(120, Math.round(T[k] / 12)); });
 
-const DEFAULTS = { cats: ['isim', 'sehir', 'hayvan', 'bitki', 'esya'], duration: 180, endMode: 'rounds', target: 6, hardLetters: true, priv: false };
+const DEFAULTS = { cats: ['isim', 'sehir', 'hayvan', 'bitki', 'esya'], duration: 180, endMode: 'rounds', target: 6, hardLetters: true, priv: false, doneSec: 20 };
 
 function sanitizeSettings(input, cur) {
   const s = { ...(cur || DEFAULTS) };
@@ -45,6 +45,7 @@ function sanitizeSettings(input, cur) {
     s.target = t;
   }
   s.hardLetters = true;
+  if (input.doneSec !== undefined) { const v = Number(input.doneSec); if (![0, 10, 20, 30].includes(v)) ge('Bitirme süresi geçersiz.'); s.doneSec = v; }
   if (input.priv !== undefined) s.priv = !!input.priv;
   return s;
 }
@@ -151,7 +152,8 @@ class Game {
     if (rd.cats.some(c => !mine[c])) ge('Önce tüm kutuları doldur.');
     rd.done[pid] = true;
     if (!rd.doneBy) rd.doneBy = pid;
-    if (!rd.countdownEnd) rd.countdownEnd = Math.min(rd.endsAt, this.now() + T.doneCountdown);
+    const ds = this.settings.doneSec === undefined ? 20 : this.settings.doneSec;
+    if (!rd.countdownEnd && ds > 0) rd.countdownEnd = Math.min(rd.endsAt, this.now() + (FAST ? ds * 1000 / 12 : ds * 1000));
     this.bump();
   }
 
