@@ -184,18 +184,8 @@ function check(cat, rawText, letter) {
   // 2) çoğul eki (kediler → kedi)
   const m = f.match(/^(.{3,}?)(lar|ler)$/);
   if (m && (r = hit(m[1]))) return r;
-  // 3) tek harf hatası (Ankra → Ankara). Sadece uzun kelimelerde, harfle başlayan ve sözlük karşılığı da aynı harfle başlayan
-  if (f.length >= 5) {
-    const cands = [].concat(byLen[cat].get(f.length - 1) || [], byLen[cat].get(f.length) || [], byLen[cat].get(f.length + 1) || []);
-    for (const k of cands) {
-      if (k[0] !== f[0]) continue; // ilk harf tutmalı
-      if (lev1(f, k)) {
-        const canon = d.get(k);
-        if (startsWithLetter(canon, letter)) return { status: 'ok', key: 'd:' + k, text, canon, fuzzy: true };
-      }
-    }
-  }
-  // 4) sözlükte yok → harf doğruysa oylanır
+  // (Bulanık eşleşme yok: sözlükte olmayan kelime benzerine yuvarlanmaz, oylamaya gider.)
+  // 3) sözlükte yok → harf doğruysa oylanır
   if (!startsWithLetter(text, letter)) return { status: 'bad', reason: 'harf', text };
   return { status: 'disputed', key: 'u:' + f, text };
 }

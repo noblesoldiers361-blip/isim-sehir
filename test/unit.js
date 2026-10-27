@@ -15,7 +15,7 @@ ok('Türkçe karakter yazılmadan (sisli → Şişli)', () => assert.strictEqual
 ok('yanlış harf = bad', () => assert.deepStrictEqual([dict.check('sehir', 'Ankara', 'B').status, dict.check('sehir', 'Ankara', 'B').reason], ['bad', 'harf']));
 ok('I / İ ayrımı', () => { assert.strictEqual(dict.check('sehir', 'İzmir', 'İ').status, 'ok'); assert.strictEqual(dict.check('sehir', 'İzmir', 'I').status, 'bad'); });
 ok('çoğul eki', () => { const r = dict.check('hayvan', 'kediler', 'K'); assert.strictEqual(r.status, 'ok'); assert.strictEqual(r.key, dict.check('hayvan', 'Kedi', 'K').key); });
-ok('yazım hatası aynı anahtarı alır', () => assert.strictEqual(dict.check('sehir', 'ankra', 'A').key, dict.check('sehir', 'Ankara', 'A').key));
+ok('yazım hatası sözlüğe yuvarlanmaz, oylanır', () => assert.strictEqual(dict.check('sehir', 'ankra', 'A').status, 'disputed'));
 ok('kısa kelimede bulanık eşleşme yok', () => assert.notStrictEqual(dict.check('hayvan', 'kedo', 'K').status, 'ok'));
 ok('sözlükte yok = disputed', () => assert.strictEqual(dict.check('isim', 'Asdfgh', 'A').status, 'disputed'));
 ok('boş = bad', () => assert.strictEqual(dict.check('isim', '   ', 'A').status, 'bad'));
