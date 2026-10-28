@@ -170,7 +170,6 @@ function check(cat, rawText, letter) {
   if (!dicts[cat]) return { status: 'bad', reason: 'kategori yok', text };
   const f = fold(text);
   if (f.length < 2 || !/\p{L}/u.test(text)) return { status: 'bad', reason: 'çok kısa', text };
-  if (isBad(text)) return { status: 'bad', reason: 'uygunsuz', text };
 
   const d = dicts[cat];
   const hit = k => {
@@ -194,7 +193,8 @@ function check(cat, rawText, letter) {
       if (startsWithLetter(canon, letter)) return { status: 'ok', key: 'd:' + near[0], text, canon, fuzzy: true };
     }
   }
-  // 4) sözlükte yok → harf doğruysa oylanır
+  // 4) sözlükte yok → uygunsuzsa elenir, harf doğruysa oylanır
+  if (isBad(text)) return { status: 'bad', reason: 'uygunsuz', text };
   if (!startsWithLetter(text, letter)) return { status: 'bad', reason: 'harf', text };
   return { status: 'disputed', key: 'u:' + f, text };
 }
