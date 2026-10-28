@@ -1,1 +1,623 @@
-Elma, Armut, Ayva, Erik, Kiraz, Vişne, Kayısı, Şeftali, Nektarin, Üzüm, İncir, Nar, Portakal, Mandalina, Limon, Greyfurt, Turunç, Muz, Ananas, Kivi, Avokado, Mango, Papaya, Hindistan cevizi, Hurma, Çilek, Ahududu, Böğürtlen, Yaban mersini, Frambuaz, Karpuz, Kavun, Dut, Zeytin, Badem, Ceviz, Fındık, Fıstık, Antep fıstığı, Kestane, Domates, Salatalık, Biber, Patlıcan, Kabak, Balkabağı, Patates, Soğan, Sarımsak, Havuç, Turp, Pancar, Şalgam, Kereviz, Pırasa, Ispanak, Marul, Roka, Lahana, Karnabahar, Brokoli, Bamya, Fasulye, Bezelye, Nohut, Mercimek, Bakla, Mısır, Buğday, Arpa, Çavdar, Yulaf, Pirinç, Çeltik, Ayçiçeği, Pamuk, Tütün, Çay, Kahve, Kakao, Şeker kamışı, Şeker pancarı, Maydanoz, Dereotu, Nane, Fesleğen, Kekik, Biberiye, Adaçayı, Ihlamur, Papatya, Lavanta, Defne, Safran, Zencefil, Zerdeçal, Tarçın, Karanfil, Kimyon, Kişniş, Rezene, Anason, Gül, Lale, Sümbül, Nergis, Zambak, Orkide, Karanfil, Menekşe, Gelincik, Orman gülü, Kasımpatı, Ayçiçek, Papatya, Yasemin, Hanımeli, Leylak, Begonya, Sardunya, Kaktüs, Sukulent, Sarmaşık, Aloe vera, Orkide, Ful, Çiğdem, Kardelen, Şakayık, Petunya, Ortanca, Akasya, Mimoza, Manolya, Dalya, Fulya, Lotus, Nilüfer, Ayrık otu, Ot, Çim, Yonca, Çayır, Eğrelti otu, Yosun, Mantar, Ardıç, Çam, Köknar, Ladin, Sedir, Servi, Meşe, Kayın, Gürgen, Dişbudak, Kavak, Söğüt, Ihlamur, Çınar, Akçaağaç, Ceviz ağacı, Kestane ağacı, Zeytin ağacı, Okaliptüs, Palmiye, Bambu, Defne ağacı, Titrek kavak, Huş, Karaağaç, Fıstık çamı, Kızılçam, Karaçam, Sakız ağacı, Keçiboynuzu, Harnup, Dut ağacı, Atkestanesi, Yabani gül, Yabani ot, Isırgan, Kuşkonmaz, Enginar, Kuşburnu, Gül hatmi, Hatmi, Ebegümeci, Tere, Turpgiller, Semizotu, Pazı, Mısır koçanı, Susam, Haşhaş, Keten, Kenevir, Hardal, Kolza, Soya, Yer fıstığı, Tatlı patates, Manyok, Lahana turşusu, Kayısı ağacı, Üzüm asması, Asma, Nane, Melisa, Mine, Kantaron, Civanperçemi, Ebegümeci, Gülhatmi, Mürver, Alıç, Yemiş, Hünnap, Trabzon hurması, Hurma, Muşmula, Zerdali, Çarkıfelek, Pitaya, Liçi, Guava, Starfruit, Yeni dünya, Altın çilek, Cennet elması, Ahlat, Kızılcık, Kuşüzümü, Kuş üzümü, Frenk üzümü, Bektaşi üzümü, Turşu, Kornişon, Pazı otu, Madımak, Ebegümeci, Labada, Kuzukulağı, Sirken, Hindiba, Radika, Tazeotu
+Acı bakla
+Acı biber
+Acı marul
+Acı yonca
+Acı çehre
+Adamotu
+Adasoğanı
+Adaçayı
+Ahlat
+Ahududu
+Ak Asma
+Ak huş
+Ak söğüt
+Ak söğüt ağacı
+Akasya
+Akdiken
+Akçaağaç
+Aloe vera
+Altın otu
+Altın çilek
+Altınbaşak
+Alıç
+Alıç ağacı
+Ananas
+Anason
+Antep fıstığı
+Arap lalesi
+Arapsaçı
+Arapsümbülü
+Ardıç
+Armut
+Arpa
+Aslanağzı
+Asma
+Asma kabağı
+Aspir
+Ateş dikeni
+Ateş çiçeği
+Atkestanesi
+Avokado
+Ayrık
+Ayrık otu
+Ayva
+Ayçiçek
+Ayçiçeği
+Açelya
+Ağaç Hatmi
+Ağaç kavunu
+Ağaç menekşesi
+Badem
+Bakla
+Bal otu
+Baldıran
+Balkabağı
+Ballıbaba
+Bambu
+Bamya
+Banotu
+Barbunya
+Begonya
+Bektaşi üzümü
+Bergamot
+Beyaz dut
+Beyaz gül
+Beyaz Lahana
+Beyaz yonca
+Bezelye
+Biber
+Biberiye
+Bodur ardıç
+Bodur fasulye
+Bodur meşe
+Bodur çam
+Brokoli
+Brüksel Lahanası
+Burçak
+Buy otu
+Buz Çiçeği
+Buğday
+Börülce
+Böğürtlen
+Büyük papatya
+Cennet bambusu
+Cennet elması
+Cennet Hurması
+Ceviz
+Ceviz ağacı
+Cezayir Menekşesi
+Civanperçemi
+Cüce palmiye
+Dalya
+Dar yapraklı sinir otu
+Darı
+Dağ elması
+Dağ Kekiği
+Dağ lalesi
+Dağ muşmulası
+Dağ nanesi
+Dağ sarımsağı
+Dağ sümbülü
+Dağ Çayı
+Dağ çileği
+Defne
+Defne ağacı
+Delice zeytin
+Demirhindi
+Deniz börülcesi
+Dere nanesi
+Dereotu
+Deve tabanı
+Devedikeni
+Dikenli armut
+Dikenli gül
+Dikenli incir
+Dişbudak
+Dolmalık biber
+Domates
+Dut
+Dut ağacı
+Düğün çiçeği
+Ebegümeci
+Ejder meyvesi
+Ekinezya
+Ekinokaktüs
+Elma
+Elma ağacı
+Elma nanesi
+Enginar
+Erguvan
+Erik
+Erik ağacı
+Ezan çiçeği
+Eğrelti
+Eğrelti otu
+Eşek Dikeni
+Eşek hıyarı
+Fasulye
+Fesleğen
+Frambuaz
+Frenk maydanozu
+Frenk soğanı
+Frenk üzümü
+Ful
+Fulya
+Funda
+Funda çalısı
+Fındık
+Fındık ağacı
+Fırça çalısı
+Fıstık
+Fıstık ağacı
+Fıstık çamı
+Gala çiçeği
+Gardenya
+Gece sefası
+Gelin tacı
+Gelin çiçeği
+Gelincik
+Geven
+Geyik dikeni
+Geyik elması
+Ginkgo
+Ginko
+Ginseng
+Glayöl
+Greyfurt
+Guava
+Göknar
+Gökçe Çiçeği
+Göl soğanı
+Gül
+Gül ağacı
+Gül hatmi
+Gülibrişim
+Gün çiçeği
+Günlük ağacı
+Gürgen
+Güz çiğdemi
+Hanımeli
+Hardal
+Harnup
+Haseki küpesi
+Hatmi
+Havuç
+Havuç otu
+Hayat ağacı
+Hayıt
+Haşhaş
+Hibiskus
+Hindiba
+Hindistan cevizi
+Hint inciri
+Hint yağı bitkisi
+Hodan
+Hurma
+Hurma ağacı
+Huş
+Hünnap
+Hünnap ağacı
+Hüsnüyusuf
+İnci çiçeği
+İncir
+İncir ağacı
+İncir dikeni
+İncir Kaktüsü
+İpek ağacı
+İpek çiçeği
+İri yapraklı ıhlamur
+İris
+İsveç şalgamı
+İt Üzümü
+İzmir kekiği
+İğde
+İğde ağacı
+Jakaranda
+Japon akçaağacı
+Japon Ayvası
+Japon Eriği
+Japon Gülü
+Japon hanımeli
+Japon Kirazı
+Japon çamı
+Kabak
+Kabak çiçeği
+Kadife çiçeği
+Kahve
+Kahve ağacı
+Kakao
+Kaktüs
+Kakule
+Kalanşo
+Kalp çiçeği
+Kamelya
+Kamış
+Kanarya gülü
+Kanarya otu
+Kanarya sarmaşığı
+Kanola
+Kantaron
+Kara Lahana
+Kara mürver
+Kara yonca
+Kara üzüm
+Karaağaç
+Karabiber
+Karadut
+Karanfil
+Karanfil ağacı
+Karayemiş
+Karaçam
+Kardelen
+Karnabahar
+Karpuz
+Kasımpatı
+Kavak
+Kavak ağacı
+Kavun
+Kayın
+Kayın ağacı
+Kayısı
+Kayısı ağacı
+Kazayağı
+Kedi nanesi
+Kedi otu
+Kekik
+Kekik otu
+Kenevir
+Kereviz
+Kestane
+Kestane ağacı
+Keten
+Keten tohumu
+Keçiboynuzu
+Keçisedefi
+Kimyon
+Kiraz
+Kiraz ağacı
+Kivi
+Kivi ağacı
+Kişniş
+Kocayemiş
+Kokina
+Kolza
+Kornişon
+Kum zambağı
+Kuzukulağı
+Kuş dili
+Kuşburnu
+Kuşkonmaz
+Kuşüzümü
+Köknar
+Küpe çiçeği
+Küçük Hindistan Cevizi
+Kına
+Kına çiçeği
+Kınakına
+Kırmızı Lahana
+Kırmızı pancar
+Kırmızı turp
+Kızılcık
+Kızılçam
+Labada
+Ladin
+Lahana
+Lahana turşusu
+Lale
+Lavanta
+Laz kirazı
+Leylak
+Leylak ağacı
+Lif kabağı
+Limon
+Limon Ağacı
+Limon Otu
+Limon sarmaşığı
+Limon servi
+Limon çiçeği
+Liçi
+Lobelya
+Lotus
+Lotus çiçeği
+Lüfer Otu
+Macar fiği
+Madımak
+Magnolya
+Makas otu
+Malta eriği
+Mandalina
+Mandalina ağacı
+Mandarin
+Mango
+Mango ağacı
+Manisa lalesi
+Manolya
+Mantar
+Manyok
+Maranta
+Marul
+Mayasıl otu
+Maydanoz
+Mazı
+Melek otu
+Melisa
+Melisa otu
+Melissa
+Menekşe
+Mercimek
+Mersin
+Mersin ağacı
+Meyankökü
+Meşe
+Meşe ağacı
+Mimoza
+Mimoza ağacı
+Mine
+Mine Çiçeği
+Misk adaçayı
+Misk gülü
+Misket Limonu
+Moringa
+Mum çiçeği
+Muz
+Muşmula
+Mürdüm Eriği
+Mürdümük
+Mürver
+Mısır
+Mısır koçanı
+Nane
+Nar
+Nar ağacı
+Narenciye
+Nektarin
+Nergis
+Nergis soğanı
+Nevruz çiçeği
+Nilüfer
+Nilüfer çiçeği
+Nişasta Çiçeği
+Nohut
+Nolina
+Norfolk çamı
+Okaliptüs
+Orkide
+Orman gülü
+Orman Sarmaşığı
+Ortanca
+Ot
+Oya Ağacı
+Oya çiçeği
+Oğulotu
+Palmiye
+Pamuk
+Pancar
+Papatya
+Papatya ağacı
+Papaya
+Patates
+Patlıcan
+Pazı
+Pazı otu
+Paşa bıyığı
+Paşa kılıcı
+Pelin Otu
+Peru zambağı
+Petunya
+Peygamber çiçeği
+Pirinç
+Pitaya
+Ponpon çiçeği
+Porsuk Ağacı
+Portakal
+Portakal ağacı
+Poy Otu
+Pırasa
+Radika
+Ravent
+Reyhan
+Rezene
+Reçine Ağacı
+Roka
+Roka otu
+Rooibos
+Ruj çiçeği
+Safran
+Sakız ağacı
+Sakız kabağı
+Salatalık
+Salkım akasya
+Salkım Söğüt
+Sandal Ağacı
+Sardunya
+Sarmaşık
+Sarı kantaron
+Sarı lale
+Sarı papatya
+Sarı yonca
+Sarı yıldız
+Sarı çam
+Sarı ısırgan
+Sarımsak
+Sarıçiçek
+Sedef otu
+Sedir
+Semizotu
+Sera gülü
+Servi
+Sinir otu
+Sirken
+Sivri biber
+Sorgum
+Soya
+Soya fasulyesi
+Soğan
+Starfruit
+Su kabağı
+Su nanesi
+Su teresi
+Sukulent
+Sultan küpesi
+Susam
+Söğüt
+Sümbül
+Süs biberi
+Süs eriği
+Süs Lahanası
+Süs narı
+Sığla
+Sığla Ağacı
+Sığırdili
+Sığırkuyruğu
+Taflan
+Tarhun
+Tarçın
+Tarçın ağacı
+Tatar hanımeli
+Tatlı biber
+Tatlı patates
+Taze Fasulye
+Taze soğan
+Tazeotu
+Tere
+Tereotu
+Tespih ağacı
+Titrek kavak
+Top akasya
+Top kadife
+Trabzon hurması
+Turp
+Turp otu
+Turpgiller
+Turunç
+Turunç ağacı
+Turşu
+Tütün
+Tüylü kekik
+Tıbbi papatya
+Tırnak çiçeği
+Uludağ Göknarı
+Uludağ çiğdemi
+Unutmabeni
+Uyuz Otu
+Uzun yapraklı nane
+Uçkun
+Uçurum çiçeği
+Uşkun
+Vanilya
+Vanilya orkidesi
+Vapur Dumanı
+Venüs sinekkapanı
+Veronika
+Vişne
+Vişne Ağacı
+Yaban mersini
+Yabani Arpa
+Yabani enginar
+Yabani gül
+Yabani Havuç
+Yabani incir
+Yabani kekik
+Yabani marul
+Yabani menekşe
+Yabani nane
+Yabani ot
+Yabani sarımsak
+Yabani zeytin
+Yalancı akasya
+Yaprak güzeli
+Yasemin
+Yasemin çiçeği
+Yavşan otu
+Yemiş
+Yemişen
+Yeni dünya
+Yer Elması
+Yer fıstığı
+Yerli muz
+Yonca
+Yosun
+Yulaf
+Yumurta çiçeği
+Yüksük Otu
+Yılan bıçağı
+Yılan otu
+Yılan Yastığı
+Yıldız Çiçeği
+Zakkum
+Zambak
+Zencefil
+Zeravent
+Zerdali
+Zerdeçal
+Zeytin
+Zeytin ağacı
+Zinya
+Çakşır
+Çalı fasulyesi
+Çalı gülü
+Çalı süpürgesi
+Çalı çileği
+Çam
+Çam fıstığı
+Çan Çiçeği
+Çarkıfelek
+Çarkıfelek çiçeği
+Çavdar
+Çay
+Çay ağacı
+Çayır
+Çayır düğmesi
+Çayır mantarı
+Çayır papatyası
+Çayır üçgülü
+Çağla
+Çeltik
+Çemen
+Çemen otu
+Çilek
+Çilek ağacı
+Çim
+Çiriş otu
+Çiğdem
+Çoban yastığı
+Çoban Çantası
+Çuha Çiçeği
+Çöl gülü
+Çöl sümbülü
+Çörek Otu
+Çöven
+Çınar
+Ökse Otu
+Öksürük otu
+Ölmez otu
+Ölmez Çiçek
+Ören gülü
+Örümcek bitkisi
+Örümcek çiçeği
+Üvez
+Üvez ağacı
+Üzerlik
+Üzüm
+Üzüm asması
+Üçgül
+Ihlamur
+Ihlamur ağacı
+Ispanak
+Isparta gülü
+Isırgan
+Isırgan Otu
+Işkın
+Işkın otu
+Şakayık
+Şalgam
+Şebboy
+Şeftali
+Şeftali ağacı
+Şeker kamışı
+Şeker pancarı
+Şerbetçi Otu
+Şeytan elması
+Şili biberi
+Şimşir
+Şimşir ağacı
