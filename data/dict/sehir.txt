@@ -1175,3 +1175,55 @@ Iğdır
 Şişli
 Şuhut
 Şırnak
+Karlıova
+Jabalpur
+Jaffna
+Jalandhar
+Jamnagar
+Jamshedpur
+Janakpur
+Jember
+Jeonju
+Jerez de la Frontera
+Jihlava
+Jilin
+Jinju
+Jinzhou
+Jiujiang
+Joensuu
+Joinville
+Jorhat
+João Pessoa
+Juiz de Fora
+Juneau
+Juárez
+Jülich
+Jyväskylä
+Ören
+Özdere
+Üçhisar
+Ürümçi
+Vaduz
+Valence
+Valladolid
+Valparaíso
+Vantaa
+Varanasi
+Varese
+Varna
+Veracruz
+Versailles
+Victoria
+Vientiane
+Viljandi
+Vinh
+Viterbo
+Vitória
+Viña del Mar
+Vladikavkaz
+Vladimir
+Vlora
+Volos
+Voronej
+Västerås
+Växjö

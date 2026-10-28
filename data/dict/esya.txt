@@ -1090,3 +1090,56 @@ Işıldak
 Şömine maşası
 Şövale
 Şırınga
+Jaluzi perde
+Jant anahtarı
+Jant göbeği
+Jant kilidi
+Jel buz paketi
+Jel tabanlık
+Jiletlik
+Jüt çanta
+Jüt halat
+Jüt ip
+Jüt sepet
+Jüt torba
+Ölçek
+Ölçüm probu
+Ölçü kaşığı
+Ön cam
+Ön far
+Ön koltuk
+Ön panel
+Ön tampon
+Örgü çantası
+Örgü iğnesi
+Özçekim çubuğu
+Üçlü askı
+Üçlü koltuk
+Üçlü raf
+Üçlü sehpa
+Üfleç
+Ürün etiketi
+Ütü spreyi
+Ütü suyu
+Ütü tabanı
+Valiz askısı
+Valiz etiketi
+Valiz kılıfı
+Valiz tartısı
+Vantilatör ızgarası
+Vantilatör pervanesi
+Verici
+Verici anten
+Veri kayıt cihazı
+Vernik fırçası
+Vida kutusu
+Vida sökücü
+Video oynatıcı
+Video projektör
+Vitrin dolabı
+Vitrin rafı
+Viyola
+Volan
+Voleybol filesi
+Voleybol topu
+Voltmetre

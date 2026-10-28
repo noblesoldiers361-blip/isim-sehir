@@ -487,3 +487,29 @@ Işık Teknisyeni
 Şirket Yöneticisi
 Şoför
 Şömine Ustası
+Jeodezi mühendisi
+Jeokimyacı
+Jeomorfolog
+Jeoteknik mühendisi
+Judo antrenörü
+Öğrenme tasarımcısı
+Öykü yazarı
+Özel kalem müdürü
+Üretim müdürü
+Üretim operatörü
+Üretim planlama uzmanı
+Üretim teknisyeni
+Ürün analisti
+Ürün geliştirme mühendisi
+Ürün tasarımcısı
+Vardiya amiri
+Vardiya mühendisi
+Vergi danışmanı
+Vergi denetmeni
+Vergi uzmanı
+Veri mühendisi
+Veri tabanı yöneticisi
+Vitrin tasarımcısı
+Viyolonsel sanatçısı
+Voleybol antrenörü
+Voleybol hakemi
